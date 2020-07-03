@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class ListItem {
@@ -45,52 +47,91 @@ class ListItem {
     }
 }
 
-public class ItemAdapter extends ArrayAdapter<ListItem>
-{
-    private List<ListItem> items;
+
+public class ItemAdapter extends ArrayAdapter<ListItem> {
+    private List<ListItem> itemList=new ArrayList<ListItem>();
     private Context context;
+
     public ItemAdapter(List<ListItem> items, Context context) {
         super(context, R.layout.row, items);
-        this.items = items;
-        this.context = context;
+        this.itemList=items;
+        this.context=context;
     }
-//    private static class ItemHolder
-//    {
-//        TextView ItemName;
-//        TextView ItemCount;
-//        CheckBox check;
-//        Button plus;
-//        Button minus;
-//    }
+
+    public ListItem getItem(int index) {
+        return this.itemList.get(index);
+    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
-//        ItemHolder holder = new ItemHolder();
-        if(convertView == null){
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.row, null);
-
-//            holder.ItemName = v.findViewById(R.id.nameView);
-//            holder.ItemCount = v.findViewById(R.id.countView);
-//            holder.plus =  v.findViewById(R.id.addButton);
-//            holder.minus =  v.findViewById(R.id.removeButton);
-//            holder.check = setOnCheckedChangeListener((MyList) context);
+        View rowView=convertView;
+        if (convertView == null) {
+            LayoutInflater inflater=(LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            rowView=inflater.inflate(R.layout.row, parent, false);
         }
-//        else{
-//            holder = (ItemHolder) v.getTag();
-//        }
-//        ListItem elem = items.get(position);
-//        holder.ItemName.setText(elem.getName());
-//        holder.ItemCount.setText(elem.getCount());
-//        holder.check.setChecked(elem.isSelect());
-//        holder.check.setTag(elem);
-        TextView ItemName = v.findViewById(R.id.nameView);
-        ItemName.setText(items.get(position).getName());
-        TextView ItemCount =  v.findViewById(R.id.countView);
-        ItemCount.setText(String.valueOf(items.get(position).getCount()));
-        return v;
+
+        TextView ItemName=rowView.findViewById(R.id.nameView);
+        ItemName.setText(itemList.get(position).getName());
+        TextView ItemCount=rowView.findViewById(R.id.countView);
+        ItemCount.setText(String.valueOf(itemList.get(position).getCount()));
+        Button plus=rowView.findViewById(R.id.addButton);
+        plus.setOnClickListener(new AddButtonListener(itemList, position));
+        Button minus=rowView.findViewById(R.id.removeButton);
+        minus.setOnClickListener(new RemoveButtonListener(itemList, position));
+
+        return rowView;
+    }
+
+    //class AddButtonListener implements View.OnClickListener{
+//    private View rowView;
+//
+//    AddButtonListener(View rowView)
+//    {
+//        this.rowView = rowView;
+//    }
+//
+//    @Override
+//    public void onClick(View v) {
+//        TextView c = rowView.findViewById(R.id.countView);
+//        int q = Integer.parseInt(String.valueOf(c.getText()));
+//        q++;
+//        c.setText(String.valueOf(q));
+//    }
+//}
+    class AddButtonListener implements View.OnClickListener {
+        private List<ListItem> itemList;
+        private int pos;
+
+        AddButtonListener(List<ListItem> itemList, int position) {
+            this.itemList=itemList;
+            this.pos=position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            itemList.get(pos).setCount(itemList.get(pos).getCount() + 1);
+            ListView listView=(ListView) (v.getParent().getParent());
+            listView.setAdapter(listView.getAdapter());
+        }
+    }
+
+    class RemoveButtonListener implements View.OnClickListener {
+        private List<ListItem> itemList;
+        private int pos;
+
+        RemoveButtonListener(List<ListItem> itemList, int position) {
+            this.itemList=itemList;
+            this.pos=position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (itemList.get(pos).getCount() > 1) {
+                itemList.get(pos).setCount(itemList.get(pos).getCount() - 1);
+                ListView listView=(ListView) (v.getParent().getParent());
+                listView.setAdapter(listView.getAdapter());
+            }
+        }
     }
 }
-
-

@@ -16,7 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class MyList extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class MyList extends AppCompatActivity implements View.OnClickListener {
     ListView list;
     Button b;
     int acc = 1;
@@ -43,12 +43,25 @@ public class MyList extends AppCompatActivity implements View.OnClickListener, A
 
         quantity.setOnClickListener(this);
         b.setOnClickListener(this);
-//        list.setOnItemClickListener(this);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String text = String.valueOf(position) + "Item clicked";
+                Toast.makeText(MyList.this, "pushed", Toast.LENGTH_SHORT).show();
+                int before=adapter.getItem(position).getCount();
+
+                int changed = before++;
+                adapter.getItem(position).setCount (changed);
+
+            }
+        });
 
 //        plus = findViewById(R.id.addButton);
 //        plus.setOnClickListener(this);
 
     }
+
 
     @Override
     public void onClick(View v) {
@@ -57,6 +70,8 @@ public class MyList extends AppCompatActivity implements View.OnClickListener, A
         {
             case R.id.add_item:
                 String itemName = new_item.getText().toString();
+                if(itemName.isEmpty())
+                    break;
                 int itemCount = acc;
                 ListItem elem = new ListItem(itemName, itemCount);
                 acc = 1;
@@ -81,12 +96,18 @@ public class MyList extends AppCompatActivity implements View.OnClickListener, A
                 listView.setAdapter(adapter);
 
         }
-
-        }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        items.remove(position);
     }
+
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+////        String text = String.valueOf(position) + "Item clicked";
+//        Toast.makeText(this, "pushed", Toast.LENGTH_SHORT).show();
+//       int before=adapter.getItem(position).getCount();
+//
+//        int changed = before++;
+//        adapter.getItem(position).setCount (changed);
+//
+////        items.remove(position);
+//    }
 }
 
