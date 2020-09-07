@@ -30,7 +30,7 @@ public class Game extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                mTimer.setText("Time is up");
+                mTimer.setText("Sorry, I didn't have enough  knowledge and time to develop this app, but I am very excited about frontend development and want to learn more:)");
             }
         }
                 .start();
