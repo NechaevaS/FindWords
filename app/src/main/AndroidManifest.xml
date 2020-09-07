@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".test"></activity>
-        <activity android:name=".MyList" />
-        <activity android:name=".Welcome" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.findWords.Game" />
+        <activity android:name="com.example.findWords.Welcome" />
+        <activity android:name="com.example.findWords.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

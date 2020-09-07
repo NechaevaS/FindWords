@@ -5,26 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#256971"
-    tools:context=".Welcome">
-
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:onClick="nextActivity"
-        android:text="Let's start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result" />
+    tools:context="com.example.findWords.Welcome">
 
     <TextView
 
         android:id="@+id/result"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="50dp"
         android:text="Hello "
+        android:gravity="center"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textSize="30sp"
@@ -32,14 +22,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="377dp"
-        android:layout_height="496dp"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/ic_launcher_foreground"
+    <TextView
+        android:id="@+id/Rules"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:gravity="center"
+        android:maxWidth="300dp"
+        android:singleLine="false"
+        android:text="You have a grid of letters, a list of words, and a limited amount of time. Locate the given words in the grid, running in one of the eight possible directions horizontally, vertically, or diagonally. After choosing all the right letters of the word click the check button.  Your goal is to find all of the words from the given list in a limited amount of time."
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="@+id/next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:onClick="nextActivity"
+        android:text="Let's start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

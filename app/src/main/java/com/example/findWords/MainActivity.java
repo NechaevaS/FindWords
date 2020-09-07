@@ -1,16 +1,16 @@
-package com.example.hellovasya;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.findWords;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.hellovasya.R;
 
 public class MainActivity extends AppCompatActivity {
     public void showWelcome(String name)

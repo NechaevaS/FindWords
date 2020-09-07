@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Hello Vasya</string>
     <string name="add_item">Add item</string>
+    <string name="let_s_play_a_game_the_rules_are_very_easy_you_have_a_grid_of_letters_a_list_of_words_and_a_limited_amount_of_time_locate_the_given_words_in_the_grid_running_in_one_of_the_eight_possible_directions_horizontally_vertically_or_diagonally_after_choosing_all_the_right_letters_of_the_word_click_the_check_button_your_goal_is_to_find_all_of_the_words_from_the_given_list_in_a_limited_amount_of_time">let\'s play a game, the rules are very easy. You have a grid of letters, a list of words, and a limited amount of time. Locate the given words in the grid, running in one of the eight possible directions horizontally, vertically, or diagonally. After choosing all the right letters of the word click the check button. Your goal is to find all of the words from the given list in a limited amount of time.</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="dialog_fire_missiles" />
+    <string name="fire" />
+    <string name="cancel" />
+    <string name="new_game" />
+    <string name="exit" />
 </resources>

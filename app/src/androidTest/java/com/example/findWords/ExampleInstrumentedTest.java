@@ -1,4 +1,4 @@
-package com.example.hellovasya;
+package com.example.findWords;
 
 import android.content.Context;
 
